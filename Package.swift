@@ -19,7 +19,7 @@ let package = Package(
             pkgConfig: "graphene-gobject-1.0",
             providers: [
                 .brew(["graphene", "glib", "glib-networking", "gobject-introspection"]),
-                .apt(["libgraphene-dev", "libglib2.0-dev", "glib-networking", "gobject-introspection", "libgirepository1.0-dev"])
+                .apt(["libgraphene-1.0-dev", "gir1.2-graphene-1.0", "libglib2.0-dev", "glib-networking", "gobject-introspection", "libgirepository1.0-dev"])
             ]),
         .target(
             name: "Graphene",
