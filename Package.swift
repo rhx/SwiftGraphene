@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .systemLibrary(
             name: "CGraphene",
-            pkgConfig: "graphene-gobject",
+            pkgConfig: "graphene-gobject-1.0",
             providers: [
                 .brew(["graphene", "glib", "glib-networking", "gobject-introspection"]),
                 .apt(["libgraphene-dev", "libglib2.0-dev", "glib-networking", "gobject-introspection", "libgirepository1.0-dev"])

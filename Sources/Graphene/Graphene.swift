@@ -1,1 +1,1 @@
-import CGraphene
+public typealias _Bool = Bool
