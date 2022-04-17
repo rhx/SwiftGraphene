@@ -1,0 +1,15 @@
+.DS_Store
+/.build
+/.docs.old
+/docs
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+undocumented.json
+Package.pins
+Package.resolved
+Package.pins

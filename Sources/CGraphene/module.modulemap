@@ -1,0 +1,12 @@
+module CGraphene [system] {
+	header "graphene_bridging.h"
+
+	link "graphene-gobject"
+	link "graphene"
+	link "freetype"
+	link "graphite2"
+	link "gobject-2.0"
+	link "glib-2.0"
+
+	export *
+}

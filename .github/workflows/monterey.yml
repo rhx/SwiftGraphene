@@ -1,0 +1,64 @@
+name: macOS 12
+
+# Dependencies of this package
+env:
+  MACOS_BREW: ${{ 'graphene glib glib-networking gobject-introspection pkg-config jq' }}
+
+on:
+  push:
+    branches:
+      - development
+      - main
+  pull_request:
+    branches:
+      - development
+      - main
+
+jobs:
+  # macOS tasks
+  build-mac-big-sur-swift-latest:
+    runs-on: macos-12.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '13.3.1'
+
+      - name: Print Swift version to confirm
+        run: swift --version
+
+      - name: Fetch dependencies for general repository
+        run: brew install $MACOS_BREW
+
+      - name: Checkout SwiftGraphene
+        uses: actions/checkout@v2
+        with:
+          path: SwiftGraphene
+
+      - name: Build SwiftGraphene
+        run: |
+          cd SwiftGraphene
+          swift build
+          cd ..
+
+      - name: Test SwiftGraphene
+        run: |
+          cd SwiftGraphene
+          swift test
+          cd ..
+
+      - name: Remove unneeded files and archive artefacts
+        run: | 
+          cd SwiftGraphene
+          swift package clean
+          rm -rf .build/repositories
+          cd ..
+
+      - name: 'Upload Artefact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artefact-monterey
+          path: |
+            SwiftGraphene/Sources/
+          retention-days: 1
