@@ -20,7 +20,7 @@ To build, download Swift from https://swift.org/download/ -- if you are using ma
 on macOS, or on Linux you should get something like:
 
 	$ swift --version
-	Swift version 5.6.0 (swift-5.6.0-RELEASE)
+	Swift version 5.6.1 (swift-5.6.1-RELEASE)
 	Target: x86_64-unknown-linux-gnu
 
 ### GLib 2.56 and Graphene 1.10 or higher
@@ -84,38 +84,49 @@ Normally, you don't build this package directly, but you embed it into your own 
 
 ### Xcode
 
-On macOS, you can build the project using Xcode instead.  To do this, you need to create an Xcode project first, then open the project in the Xcode IDE:
+On macOS, you can build the project using Xcode instead.  To do this, you need to open the package in the Xcode IDE:
 
-	./xcodegen.sh
-	open Graphene.xcodeproj
+    cd SwiftHarfBuzz
+	open Package.swift
 
 After that, use the (usual) Build and Test buttons to build/test this package.
 
 ## Documentation
 
-You can find reference documentation inside the [docs](https://rhx.github.io/SwiftGLib/) folder.
-This was generated using the [jazzy](https://github.com/realm/jazzy) tool.
-If you want to generate your own documentation, matching your local installation,
-you can use the `generate-documentation.sh` script in the repository.
-Make sure you have [sourcekitten](https://github.com/jpsim/SourceKitten) and [jazzy](https://github.com/realm/jazzy) installed, e.g. on macOS:
+You can generate documentation using the [DocC plugin](https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/).  To preview documentation matching your local installation, simply run
 
-	brew install sourcekitten
-	sudo gem install jazzy
-	./generate-documentation.sh
+    swift package --disable-sandbox preview-documentation
 
+then navigate to the URL shown for the local preview server.  Make sure you have JavaScript enabled in your browser.
+
+Alternatively, you can create static documentation using [jazzy](https://github.com/realm/jazzy).
+Make sure you have [sourcekitten](https://github.com/jpsim/SourceKitten) and [jazzy](https://github.com/realm/jazzy) installed, e.g. on macOS (x86_64):
+
+	brew install ruby sourcekitten
+	/usr/local/opt/ruby/bin/gem install jazzy
+	./generate-jazzy.sh
 
 ## Troubleshooting
 
 Here are some common errors you might encounter and how to fix them.
 
-### Old Swift toolchain or Xcode
+### Missing `.gir` Files
 
 If you get an error such as
 
-	$ ./build.sh 
-	error: unable to invoke subcommand: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-package (No such file or directory)
+	Girs located at
+	Cannot open '/GLib-2.0.gir': No such file or directory
+
+Make sure that you have the relevant `gobject-introspection` packages installed (as per the Pre-requisites section), including their `.gir` and `.pc` files.
+
+### Old Swift toolchain or Xcode
+
+If, when you run `swift build`, you get a `Segmentation fault (core dumped)` or circular dependency error such as
+
+	warning: circular dependency detected while parsing pangocairo: harfbuzz -> freetype2 -> harfbuzz
 	
-this probably means that your Swift toolchain is too old.  Make sure the latest toolchain is the one that is found when you run the Swift compiler (see above).
+this probably means that your Swift toolchain is too old, particularly on Linux.
+Make sure the latest toolchain is the one that is found when you run the Swift compiler (see above).
 
   If you get an older version, make sure that the right version of the swift compiler is found first in your `PATH`.  On macOS, use xcode-select to select and install the latest version, e.g.:
 
