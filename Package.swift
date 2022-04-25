@@ -10,8 +10,8 @@ let package = Package(
             targets: ["Graphene"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/rhx/gir2swift.git",    branch: "development"),
-        .package(url: "https://github.com/rhx/SwiftGObject.git", branch: "development"),
+        .package(url: "https://github.com/rhx/gir2swift.git",    branch: "main"),
+        .package(url: "https://github.com/rhx/SwiftGObject.git", branch: "main"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
