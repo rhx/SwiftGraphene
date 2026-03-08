@@ -3,8 +3,6 @@
 A Swift wrapper around graphene-1.x that is largely auto-generated from gobject-introspection.
 For up to date (auto-generated) reference documentation, see https://rhx.github.io/SwiftGraphene/
 
-![macOS](https://github.com/rhx/SwiftGraphene/actions/workflows/macOS.yml/badge.svg?branch=development)
-![Linux](https://github.com/rhx/SwiftGraphene/actions/workflows/Linux.yml/badge.svg?branch=development)
 ![macOS](https://github.com/rhx/SwiftGraphene/actions/workflows/macOS.yml/badge.svg?branch=main)
 ![Linux](https://github.com/rhx/SwiftGraphene/actions/workflows/Linux.yml/badge.svg?branch=main)
 
