@@ -8,29 +8,29 @@ For up to date (auto-generated) reference documentation, see https://rhx.github.
 
 ## Prerequisites
 
-### Swift 5.6 or higher
+### Swift 5.10 or higher
 
 To build, download Swift from https://swift.org/download/ -- if you are using macOS, make sure you have the command line tools installed as well).  Test that your compiler works using `swift --version`, which should give you something like
 
 	$ swift --version
-	swift-driver version: 1.45.2 Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
-    Target: x86_64-apple-darwin20.3.0
+	swift-driver version: 1.127.15 Apple Swift version 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+	Target: arm64-apple-macosx26.0
 
 on macOS, or on Linux you should get something like:
 
 	$ swift --version
-	Swift version 5.6.1 (swift-5.6.1-RELEASE)
+	Swift version 6.1 (swift-6.1-RELEASE)
 	Target: x86_64-unknown-linux-gnu
 
 ### GLib 2.56 and Graphene 1.10 or higher
 
-These Swift wrappers have been tested with glib-2.56, 2.58, 2.60, 2.62, 2.64, 2.66, 2.68, 2.70, and 2.72, as well as Graphene 1.10.  They should work with higher versions, but YMMV.  Also make sure you have `gobject-introspection` and its `.gir` files installed.
+These Swift wrappers have been tested with glib-2.56, 2.58, 2.60, 2.62, 2.64, 2.66, 2.68, 2.70, 2.72, and 2.86, as well as Graphene 1.10 and later.  They should work with higher versions, but YMMV.  Also make sure you have `gobject-introspection` and its `.gir` files installed.
 
 #### Linux
 
 ##### Ubuntu
 
-On Ubuntu 20.04 you can use the Graphene that comes with the distribution.  Just install with the `apt` package manager:
+On Ubuntu 20.04, 22.04, and 24.04 you can use the Graphene that comes with the distribution.  Just install with the `apt` package manager:
 
 	sudo apt update
 	sudo apt install libgraphene-dev gir1.2-graphene-0.0 gobject-introspection libgirepository1.0-dev libxml2-dev
@@ -53,7 +53,7 @@ On macOS, you can install Graphene using HomeBrew (for setup instructions, see h
 Normally, you don't build this package directly (but for testing you can - see 'Building' below). Instead you need to embed SwiftGraphene into your own project using the [Swift Package Manager](https://swift.org/package-manager/).  After installing the prerequisites (see 'Prerequisites' below), add `SwiftGraphene` as a dependency to your `Package.swift` file, e.g.:
 
 ```Swift
-// swift-tools-version:5.6
+// swift-tools-version:5.10
 
 import PackageDescription
 
