@@ -5,8 +5,6 @@ For up to date (auto-generated) reference documentation, see https://rhx.github.
 
 ![macOS](https://github.com/rhx/SwiftGraphene/actions/workflows/macOS.yml/badge.svg?branch=development)
 ![Linux](https://github.com/rhx/SwiftGraphene/actions/workflows/Linux.yml/badge.svg?branch=development)
-![macOS](https://github.com/rhx/SwiftGraphene/actions/workflows/macOS.yml/badge.svg?branch=main)
-![Linux](https://github.com/rhx/SwiftGraphene/actions/workflows/Linux.yml/badge.svg?branch=main)
 
 ## Prerequisites
 
